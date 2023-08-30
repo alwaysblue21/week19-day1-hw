@@ -37,6 +37,24 @@ def buy_old_timey_push_lawnmower():
         use_rusty_scissors()
 
 
+## upgrade_a fancy battery-powered lawnmower for $250
+def buy_fancy_battery_powered_lawnmower():
+    user_input = int(input("""
+                        Would you like to buy a fancy battery-powered lawnmower for $250
+                        [1] Yes! I will buy!
+                        [2] No thank you!
+    """))
+
+    if (user_input == 1):
+        game_data["money"] -= 250
+        print(f"You bought a fancy battery-powered lawnmower! With a fancy battery-powered lawnmower you can make $100 per day! You now have a total of ${game_data['money']}")
+        use_fancy_battery_powered_lawnmower()
+
+    if  (user_input == 2):
+        print(f"You will make more money with a fancy battery-powered lawnmower...., You now have a total of ${game_data['money']}")
+        use_old_timey_push_lawnmower()
+
+
 ## You are starting a landscaping business, but all you have are your teeth.
 ## Using just your teeth, you can spend the day cutting lawns and make $1. You can do this as much as you want.
 def use_teeth():
@@ -87,11 +105,33 @@ def use_old_timey_push_lawnmower():
     if (user_input == 1):
         game_data["money"] += 50
         print(f"You now have a total of ${game_data['money']}")
+        if (game_data["money"] >= 250):
+            buy_fancy_battery_powered_lawnmower()
         use_old_timey_push_lawnmower()
 
     
     if (user_input == 2):
         print(f"See you Tmr! You now have a total of ${game_data['money']}")
         use_old_timey_push_lawnmower()
+
+
+def use_fancy_battery_powered_lawnmower():
+    user_input = int(input("""
+                        Would you like to cut lawns today and make $100 today?
+                        [1] Yes! Make $100~
+                        [2] Maybe Tmr!
+    """))
+
+    if (user_input == 1):
+        game_data["money"] += 100
+        print(f"You now have a total of ${game_data['money']}")
+        
+        use_fancy_battery_powered_lawnmower()
+
+    
+    if (user_input == 2):
+        print(f"See you Tmr! You now have a total of ${game_data['money']}")
+        use_fancy_battery_powered_lawnmower()
+
 
 use_teeth()
