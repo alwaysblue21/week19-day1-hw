@@ -19,4 +19,19 @@ while (True):
         print(f"See you Tmr! You now have a total of ${game_data['money']}")
 
     
-    
+    if (game_data['money'] >= 5):
+        rusty_scissors = int(input("""
+                                Would you like to buy a pair of rusty scissors for $5?
+                                [1] Yes! I will buy!
+                                [2] Nope! I dont need one yet!
+        """))
+
+        if (rusty_scissors == 1):
+            game_data["money"] -= 5
+            print(f"You bought a pair of rusty scissors! Now you can make $5 per day with a pair of rusty scissors! You now have a total of ${game_data['money']}")
+
+            
+
+        if (rusty_scissors == 2):
+            print(f"You will make more money with a pair of rusty scissors..., You now have a total of ${game_data['money']}")
+        
