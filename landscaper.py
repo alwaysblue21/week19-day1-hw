@@ -55,6 +55,24 @@ def buy_fancy_battery_powered_lawnmower():
         use_old_timey_push_lawnmower()
 
 
+## upgrade_hire a team of starving students for $500
+def hire_a_team_of_starving_students():
+    user_input = int(input("""
+                        Would you like to hire a team of starving students for $500
+                        [1] Yes! I will hire them!
+                        [2] No thank you!
+    """))
+
+    if (user_input == 1):
+        game_data["money"] -= 500
+        print(f"You hired a team of starving students for $500! With a team of starving students you can make $250 per day! You now have a total of ${game_data['money']}")
+        hired_a_team_of_starving_students()
+
+    if  (user_input == 2):
+        print(f"You will make more money with a fancy battery-powered lawnmower...., You now have a total of ${game_data['money']}")
+        use_fancy_battery_powered_lawnmower()
+
+
 ## You are starting a landscaping business, but all you have are your teeth.
 ## Using just your teeth, you can spend the day cutting lawns and make $1. You can do this as much as you want.
 def use_teeth():
@@ -125,7 +143,8 @@ def use_fancy_battery_powered_lawnmower():
     if (user_input == 1):
         game_data["money"] += 100
         print(f"You now have a total of ${game_data['money']}")
-        
+        if (game_data["money"] >= 500):
+            hire_a_team_of_starving_students()
         use_fancy_battery_powered_lawnmower()
 
     
@@ -133,5 +152,24 @@ def use_fancy_battery_powered_lawnmower():
         print(f"See you Tmr! You now have a total of ${game_data['money']}")
         use_fancy_battery_powered_lawnmower()
 
+
+
+def hired_a_team_of_starving_students():
+    user_input = int(input("""
+                        Would you like to cut lawns today and make $250 today?
+                        [1] Yes! Make $250~
+                        [2] Maybe Tmr!
+    """))
+
+    if (user_input == 1):
+        game_data["money"] += 250
+        print(f"You now have a total of ${game_data['money']}")
+        
+        hired_a_team_of_starving_students()
+
+    
+    if (user_input == 2):
+        print(f"See you Tmr! You now have a total of ${game_data['money']}")
+        hired_a_team_of_starving_students()
 
 use_teeth()
